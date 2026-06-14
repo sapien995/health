@@ -1,0 +1,6 @@
+{
+  "name": "LunaCare: Women's Health & Recovery",
+  "description": "A supportive companion for cycle tracking, family planning management, fibroid symptom monitoring, and post-abortion recovery care.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

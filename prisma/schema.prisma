@@ -1,0 +1,52 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:../dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                   String   @id @default("default_user")
+  name                 String   @default("")
+  lastPeriodDate       String   @default("")
+  cycleLength          Int      @default(28)
+  periodLength         Int      @default(5)
+  onboardingComplete   Boolean  @default(false)
+  hasFibroids          Boolean  @default(false)
+  isPremiumUnlocked    Boolean  @default(false)
+  notificationsEnabled Boolean  @default(false)
+  notificationTime     String   @default("20:00")
+  skinType             String   @default("normal")
+  skinTone             String   @default("medium")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model MoodEntry {
+  date       String  @id
+  mood       String
+  medication String?
+  symptoms   String  // JSON stringified array
+  painLevel  Int?
+}
+
+model FibroidEntry {
+  date              String @id
+  painLevel         Int
+  bleedingIntensity String
+  symptoms          String // JSON stringified array
+  notes             String
+}
+
+model SkinDiaryEntry {
+  date              String  @id
+  glowRating        Int
+  routinesCompleted String  // JSON stringified array or "am,pm"
+  completedAmSteps  String? // JSON stringified array
+  completedPmSteps  String? // JSON stringified array
+  breakoutLevel     String
+  notes             String
+  photo             String? // Base64 string thumbnail / photo
+}
